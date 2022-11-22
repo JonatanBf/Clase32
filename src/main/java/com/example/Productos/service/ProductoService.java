@@ -28,13 +28,13 @@ public class ProductoService {
         productoRepository.deleteById(id);
     }
 
-    public void modificar(Producto p, Long id, Integer compra){
+    public Producto modificar(Long id, Integer compra){
         Optional<Producto> producto = productoRepository.findById(id);
         var productoNew = producto.get();
-        productoNew.setCantidad(p.getCantidad()-compra);
+        productoNew.setCantidad(productoNew.getCantidad()-compra);
         productoNew.setNombre("Producto modificado");
         productoRepository.save(productoNew);
-
+        return productoNew;
     }
     public Producto buscarId(Long id) {
         return  productoRepository.findById(id).get();

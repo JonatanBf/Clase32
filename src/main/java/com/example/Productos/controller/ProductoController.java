@@ -43,8 +43,7 @@ public class ProductoController {
     }
 
     @PutMapping("/modificar/{id}")
-    public Producto modificar(@RequestBody Producto p ,@PathVariable Long id, Integer compra){
-        productoService.modificar(p, id, compra);
-        return p;
+    public Producto modificar(@RequestBody Producto p ,@PathVariable Long id){
+        return productoService.modificar(id, p.getCantidad());
     }
 }
